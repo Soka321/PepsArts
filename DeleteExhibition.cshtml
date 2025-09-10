@@ -1,0 +1,15 @@
+﻿@model PepsArts.Models.Exhibition
+
+@{
+    ViewBag.Title = "DeleteExhibition";
+}
+
+<h2>DeleteExhibition</h2>
+
+<h2>Are You sure you want to delete this Exhibition?:</h2>
+<form action="/Exhibition/DeleteExhibition/@Model.Id" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <h3> Name : @Model.Name</h3>
+    
+    <a action="/Exhibition/DeleteExhibition/@Model.Id" method="post" href="#"><button class="btn btn-danger form-control" type="submit">Delete Exhibition</button></a>
+</form>

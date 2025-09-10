@@ -1,0 +1,52 @@
+﻿@model PepsArts.Models.ArtPiece
+
+@{
+    ViewBag.Title = "EditArtStatus";
+}
+
+<h2>EditArtStatus</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/ArtPiece/EditArtStatus" method="post">
+                <input type="hidden" value="@Model.Id" name="Id" />
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Art piece Title:</label>
+                            <h3>@Model.Title</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label asp-for="Status">status:</label>
+
+
+
+                            <select id="status" name="Status" class="form-control">
+                                <option value="Available" @(Model.Status == "Available" ? "selected" : "")>Available</option>
+                                <option value="Coming Up" @(Model.Status == "ComingUp" ? "selected" : "")>Coming Up</option>
+                                <option value="Not Available" @(Model.Status == "Not Available" ? "selected" : "")>Not Available</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+
+                            <button class="btn btn-block btn-success form-control" type="submit" action="/ArtPiece/EditArtStatus" name="btnStatus">Update Status</button>
+                            <br />
+                            <a href="/ArtPiece/GetArtPiece" class="btn btn-dark"> Go Back...</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

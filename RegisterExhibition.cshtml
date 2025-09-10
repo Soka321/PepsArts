@@ -1,0 +1,25 @@
+﻿@model PepsArts.Models.Exhibition_Registration
+
+<h2>Register for Exhibition</h2>
+<center>
+    @if (ViewBag.Error != null)
+    {
+        <div style="color:red">@ViewBag.Error</div>
+    }
+
+    <form action="/Exhibition/RegisterExhibition" method="post">
+        <input type="hidden" name="Exhibition_Id" value="@Model.Exhibition_Id" />
+        <input type="hidden" name="User_Id" value="@Model.User_Id" />
+        <input type="hidden" name="RegistrationDate" value="@Model.RegistrationDate.ToString("yyyy-MM-ddTHH:mm:ss")" />
+
+        <div>
+            <label for="NumberOfAttendees">Number of Attendees for Exhibition:</label>
+            <input type="number" id="NumberOfAttendees" name="NumberOfAttendees" value="@Model.NumberOfAttendees" class="form-control" min="1" required />
+        </div>
+
+        <br />
+        <button type="submit" class="btn btn-primary">Register Here</button>
+    </form>
+
+</center>
+

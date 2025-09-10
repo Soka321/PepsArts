@@ -1,0 +1,165 @@
+﻿@model PepsArts.ViewModels.ExhibitionVM
+
+@{
+    ViewBag.Title = "GetExhibition";
+}
+
+<h2>GetExhibition</h2>
+
+<input value="@Model.Id" hidden name="id" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/Exhibition/GetExhibition" method="get">
+                        <div class="row">
+                            <div class="col">
+                                @if (Session["Registered"]?.ToString() == "Registered")
+            {
+<p class="text-bg-success"><b>Registered for exhibition</b>  </p>
+            }
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Title :</label>
+                                @Model.Name
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Description :</label>
+                                @Model.Description
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Estimated value:</label>
+                                @Model.StartDate
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label>Start Date :</label>
+                                @Model.StartDate
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label>End Date:</label>
+                                @Model.EndDate
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Status :</label>
+                                @Model.EndDate
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Art Pieces presented in Exhibition:</label>
+                                @if (Model.Artworks == null)
+                                {
+                                    <p>No Art Works found for this Exhibition</p>
+                                }
+                                <ul class="list-group-flush">
+
+
+                                    @foreach (var art in Model.Artworks)
+                                    {
+
+                                        <li class="list-group-item"><input value="@art.Id" hidden name="id" /></li>
+                                        <li class="list-group-item">Art Name : @art.Title</li>
+                                        <li class="list-group-item">Art Piece : <img src="@art.ImagePath" alt="@art.Title" /></li>
+                                        <li class="list-group-item">Art Description: @art.Description</li>
+                                        <li class="list-group-item">Art Value Estimated: @art.EstimatedValue</li>
+                                        <li class="list-group-item">Art status : @art.Status</li>
+                                        <li class="list-group-item"><a href="/ArtPiece/EditStatus" class="btn btn-block btn-success">Update Art Piece Status</a></li>
+
+
+
+
+
+                                    }
+
+                                </ul>
+
+                                <!--<img src="" alt="Model.Title" />-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Art piece Artist:</label>
+                                @Model.Artworks
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Status :</label>
+                                @Model.Status
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <br />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="/Exhibition/UpdateExhibition/@Model.Id" name="btnUpdate" class="btn btn-block btn-primary form-control"> Update Exhibition </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <br />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                               
+                                <a href="/Exhibition/RegisterExhibition?Exhibition_id=@Model.Id" name="btnRegister" class="btn btn-success form-control">Register for exhibition </a>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <br />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="/Exhibition/EditStatus/@Model.Id" name="btnStatus" class="btn btn-block btn-dark form-control"> Update Exhibition Status </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <br />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="/Exhibition/DeleteExhibition/@Model.Id" name="btnDelete" class="btn btn-block btn-danger form-control"> Delete Exhibition </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <br />
+                            </div>
+                        </div>
+
+
+                    </form>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>

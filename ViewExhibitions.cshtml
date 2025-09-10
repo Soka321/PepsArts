@@ -1,0 +1,85 @@
+﻿@model List<PepsArts.Models.Exhibition>
+
+@{
+    ViewBag.Title = "ViewExhibitions";
+}
+
+<h2>ViewExhibitions</h2>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+
+        @foreach (var exhibition in Model)
+        {
+            <li><Table class="table-bordered table-dark" ><thead>
+                                                              <tr>
+                                                                  <th>ID</th>
+                                                                  <th>Title</th>
+                                                                  <th>Description</th>
+                                                                  <th>Start date</th>
+                                                                  <th>End Date</th>
+                                                                  <th>Status</th>
+                                                                  <th>Creator</th>
+                                                              </tr>
+                   </thead><tr>
+    <td>@exhibition.Id</td>
+    <td>@exhibition.Name</td>
+    <td>@exhibition.Description</td>
+    <td>@exhibition.StartDate</td>
+    <td>@exhibition.EndDate</td>
+    <td>@exhibition.Status</td>
+    <td>@exhibition.user.FirstName @exhibition.user.LastName</td>
+    <td><button name="btnStatus" id="btnStatus" class="btn btn-primary"><a href="/Exhibition/UpdateStatus/@exhibition.Id"> Update Status</a></button></td>
+    <td><button name="btnStatus" id="btnStatus" class="btn btn-danger"><a href="/Exhibition/DeleteExhibition/@exhibition.Id"> Delete Exhibition</a></button></td>
+
+</tr><tr>
+    
+    <td><a href="/Exhibition/AddExhibition"><button name="btnStatus" id="btnStatus" class="btn btn-success"> Create Exhibition</button></a></td>
+    
+</tr></Table></li>
+        }
+
+
+
+
+    </ul>
+}
+else {
+    <ul><li class="shadow">
+    <Table class="table-bordered table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Start date</th>
+                <th>End Date</th>
+                <th>Status</th>
+                <th>Creator</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+        </tr>
+
+        <tr>
+            <content>
+                <p class="text-bg-info text-dark-emphasis">No Exhibitions found yet...</p>
+            </content>
+        </tr>
+        <tr></tr>
+
+    </Table>
+    <a href="/Exhibition/AddExhibition"><button name="btnAdd" id="btnAdd" class="btn btn-success"> Create Exhibition</button></a>
+</li></ul>
+    
+}
+
+

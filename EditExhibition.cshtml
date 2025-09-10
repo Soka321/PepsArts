@@ -1,0 +1,52 @@
+﻿@model PepsArts.ViewModels.ExhibitionVM
+
+@{
+    ViewBag.Title = "EditExhibition";
+}
+
+<h2>EdExhibition</h2>
+
+
+<h2>Edit Exhibition</h2>
+
+@using (Html.BeginForm("EditExhibition", "Exhibition", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+
+    <div>
+        <label>Name:</label>
+        @Html.TextBoxFor(model => model.Name)
+    </div>
+
+    <div>
+        <label>Start Date:</label>
+        @Html.TextBoxFor(model => model.StartDate, "{0:yyyy-MM-dd}", new { type = "date" })
+    </div>
+
+    <div>
+        <label>End Date:</label>
+        @Html.TextBoxFor(model => model.EndDate, "{0:yyyy-MM-dd}", new { type = "date" })
+    </div>
+
+    <div>
+        <label>Description:</label>
+        @Html.TextAreaFor(model => model.Description)
+    </div>
+
+    <div>
+        <label>Status:</label>
+        @Html.TextBoxFor(model => model.Status)
+    </div>
+
+    <div>
+        <label>User ID:</label>
+        @Html.TextBoxFor(model => model.User_Id)
+    </div>
+
+    <button type="submit">Save Changes</button>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

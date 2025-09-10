@@ -1,0 +1,122 @@
+﻿@model PepsArts.Models.ArtPiece
+
+@{
+    ViewBag.Title = "UpdateArtPiece";
+}
+
+<h2>UpdateArtPiece</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class=" card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <hr />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <center><h2><b>Update Art Piece </b></h2></center>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <form class="form-group" action="/ArtPiece/UpdateArtPiece" method="post">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="Title">Title:</label>
+                                            <input type="text" placeholder="Enter Tile of Art Piece" class="form-control" asp-for="Title" value="@Model.Title" />
+                                            <span asp-validation-for="Title" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="Description">Description:</label>
+                                            <input type="text" placeholder="Enter the Art piece description" class="form-control" asp-for="Description" width="100" height="100" value="@Model.Description"/>
+                                            <span asp-validation-for="Description" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="EstimatedValue">Estimated Value:</label>
+                                            <input type="text" placeholder="Value of Art Piece" class="form-control" asp-for="EstimatedValue" value="@Model.EstimatedValue"/>
+                                            <span asp-validation-for="EstimatedValue" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="artist">Artist Id:</label>
+                                            <input type="text" placeholder="Enter Id of Artist owning Art piece" class="form-control" asp-for="artist" value="@Model.Artist_Id" />
+                                            <span asp-validation-for="artist" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="ImagePath">Add Art Piece:</label>
+                                            <input type="file" placeholder="Enter Artist Country of origin" class="form-control" asp-for="ImagePath"  value="@Model.ImagePath"/>
+                                            <span asp-validation-for="ImagePath" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="Status">status:</label>
+                                            
+
+
+                                                <select id="status" name="Status" class="form-control">
+                                                    <option value="Available" @(Model.Status == "Available" ? "selected" : "")>Available</option>
+                                                    <option value="Coming Up" @(Model.Status == "ComingUp" ? "selected" : "")>Coming Up</option>
+                                                    <option value="Not Available" @(Model.Status == "Not Available" ? "selected" : "")>Not Available</option>
+                                                </select>
+                                                
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="DateCreated">Date Added:</label>
+                                            <input type="date" placeholder="Enter Date" class="form-control" value="@Model.DateCreated" />
+                                            <span asp-validation-for="DateCreated" class="text-danger" />
+                                        </div>
+                                    </div>
+
+                                    <
+                                    <div class="row">
+                                        <div class="col">
+                                            <br />
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-block btn-primary" action="ArtPiece/UpdateArtPiece/@Model.Id" method="post">Add This Art Piece</button>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </center>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

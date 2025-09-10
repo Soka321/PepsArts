@@ -1,0 +1,43 @@
+﻿@model List<PepsArts.Models.Exhibition_Registration>
+
+@{
+    ViewBag.Title = "GetRegistrations";
+}
+
+<h2>GetRegistrations</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model != null && Model.Any())
+            {
+                <center>
+                    <ul class=" list-group-horizontal-lg">
+                        @foreach (var register in Model)
+                        {
+                            <li class="list-group-item"><b>Exhibition Id :</b> @register.Exhibition_Id</li>
+                            <li class="list-group-item"><b>Exhibition Title :</b> @register.exhibition.Name</li>
+                            <li class="list-group-item"><b>Number of attendees :</b> @register.NumberOfAttendees</li>
+                            <li class="list-group-item"><b>Visitor registered:</b> @register.User_Id @register.user.FirstName</li>
+                            <li class="list-group-item"><b>Date registered :</b> @register.RegistrationDate</li>
+                        }
+                    </ul>
+
+                </center>
+            }
+            <center>
+                <p class="text-bg-danger"><b>No Registrations for Exhibitions yet..</b></p>
+                <ul class=" list-group-horizontal-lg">
+                    @foreach (var register in Model)
+                    {
+                        <li class="list-group-item"><b>Exhibition Id :</b> @register.Exhibition_Id</li>
+                        <li class="list-group-item"><b>Exhibition Title :</b> @register.exhibition.Name</li>
+                        <li class="list-group-item"><b>Number of attendees :</b> @register.NumberOfAttendees</li>
+                        <li class="list-group-item"><b>Visitor registered:</b> @register.User_Id @register.user.FirstName</li>
+                        <li class="list-group-item"><b>Date registered :</b> @register.RegistrationDate</li>
+                    }
+                </ul>
+
+            </center>
+        </div>
+    </div>
+</div>

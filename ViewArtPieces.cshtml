@@ -1,0 +1,96 @@
+﻿@model List<PepsArts.Models.ArtPiece>
+
+@{
+    ViewBag.Title = "ViewArtPieces";
+}
+
+<h2>ViewArtPieces</h2>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+
+        @foreach (var art in Model)
+        {
+            <li>
+                <Table class="table-bordered table-dark">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Estimated Value</th>
+                            <th>Art Piece</th>
+                            <th>Status</th>
+                            <th>Date Created</th>
+                            <th>Artist</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>@art.Id</td>
+                        <td>@art.Title</td>
+                        <td>@art.Description</td>
+                        <td>@art.EstimatedValue</td>
+                        <td>@art.ImagePath</td>
+                        <td>@art.Status</td>
+                        <td>@art.DateCreated</td>
+                        <td>@art.artist.Name @art.artist.Surname</td>
+                        <td><button name="btnStatus" id="btnStatus" class="btn btn-primary"><a href="/ArtPiece/UpdateStatus/@art.Id"> Update Status</a></button></td>
+                        <td><button name="btnDelete" id="btnDelete" class="btn btn-danger"><a href="/ArtPiece/DeleteArtPiece/@art.Id"> Delete Art Piece</a></button></td>
+
+                    </tr>
+                    <tr>
+
+                        <td><a href="/ArtPiece/AddArtPiece"><button name="btnAddPiece" id="btnAddPiece" class="btn btn-success"> Add Art Piece</button></a></td>
+
+                    </tr>
+                </Table>
+            </li>
+        }
+
+
+
+
+    </ul>
+}
+else
+{
+    <ul>
+        <li class="shadow">
+            <Table class="table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Estimated Value</th>
+                        <th>Art Piece</th>
+                        <th>Status</th>
+                        <th>Date Created</th>
+                        <th>Artist</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                    <td>#</td>
+                </tr>
+
+                <tr>
+                    <content>
+                        <p class="text-bg-info text-dark-emphasis">No Art pieces found yet...</p>
+                    </content>
+                </tr>
+                <tr></tr>
+
+            </Table>
+            <a href="/ArtPiece/AddArtPiece"><button name="btnAdd" id="btnAdd" class="btn btn-success"> Add Art Piece</button></a>
+        </li>
+    </ul>
+
+}

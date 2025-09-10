@@ -1,0 +1,144 @@
+﻿@model PepsArts.ViewModels.ExhibitionVM
+
+@{
+    ViewBag.Title = "AddExhibition";
+}
+
+<h2>AddExhibition</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class=" card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <img src="~/images2/exhibitionicon.png" alt="Artist profile" class="img-rounded img-fluid" width="150" height="150" />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <center><h2><b>Create Exhibition Here</b></h2></center>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <center>
+                                <form class="form-group" action="/Exhibition/AddExhibition" method="post">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="Name">Name:</label>
+                                            <input type="text" placeholder="Enter Name" class="form-control" asp-for="Name" value="@Model.Name" />
+                                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                            <span asp-validation-for="Name" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="Description">Description:</label>
+                                            <input type="text" placeholder="Enter Exhibition Description" class="form-control" asp-for="Surname" size="50" value="@Model.Description" />
+                                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                                            <span asp-validation-for="Description" class="text-danger" />
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="StartDate">Start Date:</label>
+                                            <input type="datetime-local" placeholder="Enter start date" class="form-control" asp-for="StartDate" value="@Model.StartDate" />
+                                            @Html.ValidationMessageFor(m => m.StartDate, "", new { @class = "text-danger" })
+                                            <span asp-validation-for="StartDate" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label>End Date:</label>
+                                            <input type="datetime-local" placeholder="Enter End Date" class="form-control" asp-for="EndDate" value="@Model.EndDate" />
+                                            @Html.ValidationMessageFor(m => m.EndDate, "", new { @class = "text-danger" })
+                                            <span asp-validation-for="EndDate" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    
+                                     
+                                      
+                                        <div class="row">
+                                        <div class="col">
+                                           <label>Select Art pieces for Exhibition  </label>
+                                   @if (Model.Artworks != null && Model.Artworks.Any())
+{
+    foreach (var art in Model.Artworks)
+    {
+        <div>
+            <input type="checkbox" value="@art.Id" class="form-control" />
+            @art.Title
+        </div>
+    }
+}
+else
+{
+   <div>
+        <input type="checkbox" disabled class="form-control" />
+        <span class="text-muted">No artworks available</span>
+    </div>
+}
+
+
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col">
+                                            <label asp-for="Status">Status:</label>
+
+                                            <select id="status" name="Status" class="form-control">
+                                                <option value="Upcoming" @(Model.Status == "Upcoming" ? "selected" : "")>Upcoming</option>
+                                                <option value="Active" @(Model.Status == "Active" ? "selected" : "")>Active</option>
+                                                <option value="Completed" @(Model.Status == "Completed" ? "selected" : "")>Completed</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <br />
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-block btn-primary" action="/Exhibition/AddExhibition" method="post">Create Exhibition</button>
+                                            <br/>
+                                            <a href="/Exhibition/ViewExhibitions"> Go back...</a>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </center>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2">
+            <img src="~/images2/exhibition"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model PepsArts.Models.Exhibition_Registration
+
+@{
+    ViewBag.Title = "Register for Exhibition";
+}
+
+<h2>Register for Exhibition</h2>
+
+<!-- Display error message if present -->
+<div style="color:red">
+    <!-- Replace this with actual error message logic -->
+    <!-- Example: -->
+    <!-- @ViewBag.Error -->
+</div>
+
+<form action="/Exhibition/ExhibitionRegister" method="post">
+    <!-- Hidden fields for model data -->
+    <input type="hidden" name="Exhibition_Id" value="@Model.Exhibition_Id" />
+    <input type="hidden" name="User_Id" value="@Session["UserId"]" />
+    <input type="hidden" name="RegistrationDate" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" />
+
+    <!-- Input for number of attendees -->
+    <div>
+        <label for="NumberOfAttendees">Number of Attendees:</label>
+        <input type="number" id="NumberOfAttendees" name="NumberOfAttendees" class="form-control" min="1" required />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Register Here</button>
+</form>
+
+}
+
+

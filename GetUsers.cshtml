@@ -1,0 +1,29 @@
+﻿@model List<PepsArts.Models.User>
+@{
+    ViewBag.Title = "GetUsers";
+}
+
+
+<h2>GetUsers</h2>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var user in Model)
+        {
+            <li>@user.FirstName</li>
+            <li>@user.LastName</li>
+            <li>@user.Gender</li>
+            <li>@user.Age</li>
+            <li>@user.Email</li>
+            <li>@user.Id</li>
+            <li><img src="@user.Image" alt="User Image" width="100" /></li>
+        }
+    </ul>
+}
+else
+{
+    <p>No users found.</p>
+}
+
+

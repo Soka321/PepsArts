@@ -1,0 +1,74 @@
+﻿@model PepsArts.Models.ArtPiece
+
+@{
+    ViewBag.Title = "GetArtPiece";
+}
+
+<h2>GetArtPiece</h2>
+<input value="@Model.Id" hidden name="id"/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/ArtPiece/GetArtPiece" method="get">
+                        <div class="row">
+                            <div class="col">
+                                <label>Title :</label>
+                                @Model.Title
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Description :</label>
+                                @Model.Description
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Estimated value:</label>
+                                @Model.EstimatedValue
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Status :</label>
+                                @Model.Status
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Art Piece:</label>
+                                <img src="@Model.ImagePath" alt="@Model.Title" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Art piece Artist:</label>
+                                @Model.Artist_Id
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Date Added :</label>
+                                @Model.DateCreated
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="/ArtPiece/UpdateArtpiece/@Model.Id" class="btn btn-block btn-primary"> Update Art Piece </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <a href="/ArtPiece/DeleteArtpiece/@Model.Id" class="btn btn-block btn-danger"> Delete Art Piece </a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

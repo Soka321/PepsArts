@@ -1,0 +1,15 @@
+﻿@model PepsArts.Models.ArtPiece
+
+@{
+    ViewBag.Title = "DeleteArtPiece";
+}
+
+<h2>DeleteArtPiece</h2>
+
+<h2>Are You sure you want to delete this Art Piece?:</h2>
+<form action="/ArtPiece/DeleteArtPiece/@Model.Id" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <h3> Name : @Model.Title</h3>
+
+    <a action="/ArtPiece/DeleteArtPiece/@Model.Id" method="post" href="#"><button class="btn btn-danger form-control" type="submit">Delete ArtPiece</button></a>
+</form>
